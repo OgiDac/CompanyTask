@@ -45,7 +45,8 @@ func CreateRefreshToken(user *domain.User, secret string, expiry int) (refreshTo
 }
 
 func IsAuthorized(requestToken string, secret string) (bool, error) {
-	_, err := jwt.Parse(requestToken, func(token *jwt.Token) (interface{}, error) {
+	claims := &domain.JwtClaims{}
+	_, err := jwt.ParseWithClaims(requestToken, claims, func(token *jwt.Token) (interface{}, error) {
 		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
 			return nil, errors.New("unexpected signing method")
 		}
@@ -58,7 +59,8 @@ func IsAuthorized(requestToken string, secret string) (bool, error) {
 }
 
 func ExtractIDFromToken(requestToken string, secret string) (int, error) {
-	token, err := jwt.Parse(requestToken, func(token *jwt.Token) (interface{}, error) {
+	claims := &domain.JwtClaims{}
+	token, err := jwt.ParseWithClaims(requestToken, claims, func(token *jwt.Token) (interface{}, error) {
 		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
 			return nil, errors.New("unexpected signing method")
 		}
@@ -67,15 +69,8 @@ func ExtractIDFromToken(requestToken string, secret string) (int, error) {
 	if err != nil {
 		return 0, err
 	}
-
-	claims, ok := token.Claims.(jwt.MapClaims)
-
-	if !ok && !token.Valid {
+	if !token.Valid {
 		return 0, errors.New("invalid token")
 	}
-
-	id := claims["id"].(float64)
-
-	idInt := int(id)
-	return idInt, nil
+	return claims.ID, nil
 }

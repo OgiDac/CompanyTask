@@ -23,7 +23,6 @@ func NewUserRouter(timeout time.Duration, db *gorm.DB, rabbitChanel *amqp.Channe
 	privateGroup := private.Group("/users")
 
 	publicGroup.GET("/", uc.GetAllUsers)
-	publicGroup.GET("/test-publish", uc.PublishTestEvent)
 	publicGroup.POST("/login", uc.Login)
 	publicGroup.POST("/", uc.CreateUser)
 	privateGroup.PUT("/", uc.UpdateUser)
