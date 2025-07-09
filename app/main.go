@@ -28,17 +28,18 @@ import (
 func main() {
 
 	app := config.App()
+	defer app.CloseDatabaseConnection()
+	defer app.CloseRabbitConnection()
 
 	db := app.DB
 	db.AutoMigrate(&domain.User{})
-	defer app.CloseDatabaseConnection()
 
 	r := gin.Default()
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	timeout := time.Duration(5) * time.Second
 
-	router.Setup(timeout, app.DB, r)
+	router.Setup(timeout, app.DB, app.RabbitChannel, r)
 
 	srv := &http.Server{
 		Addr:         ":8000",

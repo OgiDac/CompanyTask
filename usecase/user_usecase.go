@@ -13,12 +13,18 @@ import (
 
 type userUseCase struct {
 	userRepository repository.UserRepository
+	eventPublisher domain.EventPublisher
 	contextTimeout time.Duration
 }
 
-func NewUserUseCase(userRepository repository.UserRepository, timeout time.Duration) domain.UserUseCase {
+func NewUserUseCase(
+	userRepository repository.UserRepository,
+	eventPublisher domain.EventPublisher,
+	timeout time.Duration,
+) domain.UserUseCase {
 	return &userUseCase{
 		userRepository: userRepository,
+		eventPublisher: eventPublisher,
 		contextTimeout: timeout,
 	}
 }
@@ -68,6 +74,14 @@ func (u *userUseCase) CreateUser(c context.Context, user domain.SignUpRequest) (
 		return "", "", err
 	}
 
+	_ = u.eventPublisher.PublishEvent(domain.UserEventEnvelope{
+		Type: "UserCreated",
+		Data: domain.UserCreatedEvent{
+			Email: signUpUser.Email,
+			Name:  signUpUser.Name,
+		},
+	})
+
 	accessToken, err := utils.CreateAccessToken(signUpUser, "secret", 5)
 	if err != nil {
 		return "", "", err
@@ -91,7 +105,21 @@ func (u *userUseCase) UpdateUser(c context.Context, req domain.UpdateRequest) er
 		Email: req.Email,
 	}
 
-	return u.userRepository.UpdateUser(ctx, updatedUser)
+	err := u.userRepository.UpdateUser(ctx, updatedUser)
+	if err != nil {
+		return err
+	}
+
+	_ = u.eventPublisher.PublishEvent(domain.UserEventEnvelope{
+		Type: "UserUpdated",
+		Data: domain.UserUpdatedEvent{
+			ID:    updatedUser.ID,
+			Email: updatedUser.Email,
+			Name:  updatedUser.Name,
+		},
+	})
+
+	return nil
 }
 
 func (u *userUseCase) Login(ctx context.Context, request domain.LoginRequest) (string, string, error) {
@@ -124,5 +152,17 @@ func (u *userUseCase) DeleteUser(ctx context.Context, id uint) error {
 	ctx, cancel := context.WithTimeout(ctx, u.contextTimeout)
 	defer cancel()
 
-	return u.userRepository.DeleteUser(ctx, id)
+	err := u.userRepository.DeleteUser(ctx, id)
+	if err != nil {
+		return err
+	}
+
+	_ = u.eventPublisher.PublishEvent(domain.UserEventEnvelope{
+		Type: "UserUpdated",
+		Data: domain.UserDeletedEvent{
+			ID: id,
+		},
+	})
+
+	return nil
 }
