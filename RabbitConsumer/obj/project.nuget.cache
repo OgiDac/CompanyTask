@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "b1NwTWpdcwoGJ4GzuSdlvYmB4k8mqI+e3WX/MDf+jkK+tcKSd9yl6nFzSB4Wjr7gHsLXu6OwxIMpRc7ex+1V6w==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ognjen.dacevic\\Desktop\\Arry\\CompanyTask\\RabbitConsumer\\RabbitConsumer.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ognjen.dacevic\\.nuget\\packages\\rabbitmq.client\\7.1.2\\rabbitmq.client.7.1.2.nupkg.sha512",
+    "C:\\Users\\ognjen.dacevic\\.nuget\\packages\\system.io.pipelines\\8.0.0\\system.io.pipelines.8.0.0.nupkg.sha512",
+    "C:\\Users\\ognjen.dacevic\\.nuget\\packages\\system.threading.ratelimiting\\8.0.0\\system.threading.ratelimiting.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

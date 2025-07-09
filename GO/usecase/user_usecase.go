@@ -158,7 +158,7 @@ func (u *userUseCase) DeleteUser(ctx context.Context, id uint) error {
 	}
 
 	_ = u.eventPublisher.PublishEvent(domain.UserEventEnvelope{
-		Type: "UserUpdated",
+		Type: "UserDeleted",
 		Data: domain.UserDeletedEvent{
 			ID: id,
 		},
