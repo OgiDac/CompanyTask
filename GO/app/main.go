@@ -26,10 +26,10 @@ import (
 // @in header
 // @name Authorization
 func main() {
-
 	app := config.App()
 	defer app.CloseDatabaseConnection()
 	defer app.CloseRabbitConnection()
+	defer app.CloseMongoConnection()
 
 	db := app.DB
 	db.AutoMigrate(&domain.User{})
@@ -39,7 +39,7 @@ func main() {
 
 	timeout := time.Duration(app.Env.ContextTimeout) * time.Second
 
-	router.Setup(app.Env, timeout, app.DB, app.RabbitChannel, r)
+	router.Setup(app.Env, timeout, app.DB, app.MongoDB, app.RabbitChannel, r)
 
 	srv := &http.Server{
 		Addr:         app.Env.ServerAddress,

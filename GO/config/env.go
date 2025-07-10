@@ -16,6 +16,8 @@ type Env struct {
 	RefreshTokenExpiryHour int    `mapstructure:"REFRESH_TOKEN_EXPIRY_HOUR"`
 	AccessTokenSecret      string `mapstructure:"ACCESS_TOKEN_SECRET"`
 	RefreshTokenSecret     string `mapstructure:"REFRESH_TOKEN_SECRET"`
+	MongoURL               string `mapstructure:"MONGO_URL"`
+	MongoDBName            string `mapstructure:"MONGO_DB_NAME"`
 }
 
 func NewEnv() *Env {
@@ -32,6 +34,8 @@ func NewEnv() *Env {
 	viper.BindEnv("REFRESH_TOKEN_EXPIRY_HOUR")
 	viper.BindEnv("ACCESS_TOKEN_SECRET")
 	viper.BindEnv("REFRESH_TOKEN_SECRET")
+	viper.BindEnv("MONGO_URL")
+	viper.BindEnv("MONGO_DB_NAME")
 
 	if err := viper.ReadInConfig(); err != nil {
 		fmt.Println("No .env file found, relying on environment variables")
