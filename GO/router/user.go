@@ -4,6 +4,7 @@ import (
 	"time"
 
 	"github.com/OgiDac/CompanyTask/api/controllers"
+	"github.com/OgiDac/CompanyTask/config"
 	"github.com/OgiDac/CompanyTask/publisher"
 	"github.com/OgiDac/CompanyTask/repository"
 	"github.com/OgiDac/CompanyTask/usecase"
@@ -12,11 +13,11 @@ import (
 	"gorm.io/gorm"
 )
 
-func NewUserRouter(timeout time.Duration, db *gorm.DB, rabbitChanel *amqp.Channel, public *gin.RouterGroup, private *gin.RouterGroup) {
+func NewUserRouter(env *config.Env, timeout time.Duration, db *gorm.DB, rabbitChanel *amqp.Channel, public *gin.RouterGroup, private *gin.RouterGroup) {
 	ur := repository.NewUserRepository(db)
 	publisher := publisher.NewRabbitPublisher(rabbitChanel, "user-queue")
 	uc := &controllers.UserController{
-		UserUseCase: usecase.NewUserUseCase(ur, publisher, timeout),
+		UserUseCase: usecase.NewUserUseCase(ur, publisher, timeout, env),
 	}
 
 	publicGroup := public.Group("/users")

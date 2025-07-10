@@ -5,6 +5,7 @@ import (
 	"errors"
 	"time"
 
+	"github.com/OgiDac/CompanyTask/config"
 	"github.com/OgiDac/CompanyTask/domain"
 	"github.com/OgiDac/CompanyTask/repository"
 	"github.com/OgiDac/CompanyTask/utils"
@@ -15,17 +16,20 @@ type userUseCase struct {
 	userRepository repository.UserRepository
 	eventPublisher domain.EventPublisher
 	contextTimeout time.Duration
+	env            *config.Env
 }
 
 func NewUserUseCase(
 	userRepository repository.UserRepository,
 	eventPublisher domain.EventPublisher,
 	timeout time.Duration,
+	env *config.Env,
 ) domain.UserUseCase {
 	return &userUseCase{
 		userRepository: userRepository,
 		eventPublisher: eventPublisher,
 		contextTimeout: timeout,
+		env:            env,
 	}
 }
 
@@ -82,12 +86,12 @@ func (u *userUseCase) CreateUser(c context.Context, user domain.SignUpRequest) (
 		},
 	})
 
-	accessToken, err := utils.CreateAccessToken(signUpUser, "secret", 5)
+	accessToken, err := utils.CreateAccessToken(signUpUser, u.env.AccessTokenSecret, 5)
 	if err != nil {
 		return "", "", err
 	}
 
-	refreshToken, err := utils.CreateRefreshToken(signUpUser, "secret", 5)
+	refreshToken, err := utils.CreateRefreshToken(signUpUser, u.env.RefreshTokenSecret, 5)
 	if err != nil {
 		return "", "", err
 	}
@@ -135,12 +139,12 @@ func (u *userUseCase) Login(ctx context.Context, request domain.LoginRequest) (s
 		return "", "", errors.New("invalid password")
 	}
 
-	accessToken, err := utils.CreateAccessToken(user, "secret", 5)
+	accessToken, err := utils.CreateAccessToken(user, u.env.AccessTokenSecret, 5)
 	if err != nil {
 		return "", "", err
 	}
 
-	refreshToken, err := utils.CreateRefreshToken(user, "secret", 5)
+	refreshToken, err := utils.CreateRefreshToken(user, u.env.RefreshTokenSecret, 5)
 	if err != nil {
 		return "", "", err
 	}

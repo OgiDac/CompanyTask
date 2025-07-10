@@ -7,10 +7,11 @@ import (
 	"gorm.io/gorm"
 )
 
-func NewGormConnection() *gorm.DB {
+func NewGormConnection(env *Env) *gorm.DB {
 	// DSN without database name
-	baseDSN := "root:1234@tcp(localhost:3306)/"
-	targetDB := "company"
+	// baseDSN := "root:1234@tcp(localhost:3306)/"
+	baseDSN := env.BaseDSN
+	targetDB := env.TargetDB
 
 	// Connect to MySQL server (no DB yet)
 	serverDB, err := gorm.Open(mysql.Open(baseDSN), &gorm.Config{})
@@ -27,7 +28,8 @@ func NewGormConnection() *gorm.DB {
 	}
 
 	// Now connect to the target database
-	finalDSN := "root:1234@tcp(localhost:3306)/company?parseTime=true"
+	// finalDSN := "root:1234@tcp(localhost:3306)/company?parseTime=true"
+	finalDSN := env.BaseDSN + env.TargetDB
 	db, err := gorm.Open(mysql.Open(finalDSN), &gorm.Config{})
 	if err != nil {
 		fmt.Println("Error connecting to the database:", err)

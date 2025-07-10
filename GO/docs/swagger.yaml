@@ -61,7 +61,7 @@ definitions:
       password:
         type: string
     type: object
-host: localhost:8000
+host: localhost:8081
 info:
   contact: {}
   description: API documentation for the CompanyTask project

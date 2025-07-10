@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\ognjen.dacevic\\Desktop\\Arry\\CompanyTask\\RabbitConsumer\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{ED37BE18-C388-4BA9-A6CB-1DD51379DCCA}|RabbitConsumer.csproj|c:\\users\\ognjen.dacevic\\desktop\\arry\\companytask\\rabbitconsumer\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED37BE18-C388-4BA9-A6CB-1DD51379DCCA}|RabbitConsumer.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{ED37BE18-C388-4BA9-A6CB-1DD51379DCCA}|RabbitConsumer.csproj|c:\\users\\ognjen.dacevic\\desktop\\arry\\companytask\\rabbitconsumer\\eventhandler\\events\\userupdatedevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{ED37BE18-C388-4BA9-A6CB-1DD51379DCCA}|RabbitConsumer.csproj|solutionrelative:eventhandler\\events\\userupdatedevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -17,10 +21,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{ED37BE18-C388-4BA9-A6CB-1DD51379DCCA}|RabbitConsumer.csproj|c:\\users\\ognjen.dacevic\\desktop\\arry\\companytask\\rabbitconsumer\\eventhandler\\eventhandlerfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{ED37BE18-C388-4BA9-A6CB-1DD51379DCCA}|RabbitConsumer.csproj|solutionrelative:eventhandler\\eventhandlerfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ED37BE18-C388-4BA9-A6CB-1DD51379DCCA}|RabbitConsumer.csproj|c:\\users\\ognjen.dacevic\\desktop\\arry\\companytask\\rabbitconsumer\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED37BE18-C388-4BA9-A6CB-1DD51379DCCA}|RabbitConsumer.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{ED37BE18-C388-4BA9-A6CB-1DD51379DCCA}|RabbitConsumer.csproj|c:\\users\\ognjen.dacevic\\desktop\\arry\\companytask\\rabbitconsumer\\eventhandler\\usereventenvelope.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -38,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Bookmark",
@@ -58,7 +58,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "EventHandlerFactory.cs",
               "DocumentMoniker": "C:\\Users\\ognjen.dacevic\\Desktop\\Arry\\CompanyTask\\RabbitConsumer\\EventHandler\\EventHandlerFactory.cs",
               "RelativeDocumentMoniker": "EventHandler\\EventHandlerFactory.cs",
@@ -66,12 +66,11 @@
               "RelativeToolTip": "EventHandler\\EventHandlerFactory.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAqwBYAAABUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-09T13:57:20.13Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-09T13:57:20.13Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "UserDeletedEvent.cs",
               "DocumentMoniker": "C:\\Users\\ognjen.dacevic\\Desktop\\Arry\\CompanyTask\\RabbitConsumer\\EventHandler\\Events\\UserDeletedEvent.cs",
               "RelativeDocumentMoniker": "EventHandler\\Events\\UserDeletedEvent.cs",
@@ -79,12 +78,11 @@
               "RelativeToolTip": "EventHandler\\Events\\UserDeletedEvent.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAqwAsAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-09T13:56:06.447Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-09T13:56:06.447Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "UserUpdatedEvent.cs",
               "DocumentMoniker": "C:\\Users\\ognjen.dacevic\\Desktop\\Arry\\CompanyTask\\RabbitConsumer\\EventHandler\\Events\\UserUpdatedEvent.cs",
               "RelativeDocumentMoniker": "EventHandler\\Events\\UserUpdatedEvent.cs",
@@ -97,7 +95,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "UserCreatedEvent.cs",
               "DocumentMoniker": "C:\\Users\\ognjen.dacevic\\Desktop\\Arry\\CompanyTask\\RabbitConsumer\\EventHandler\\Events\\UserCreatedEvent.cs",
               "RelativeDocumentMoniker": "EventHandler\\Events\\UserCreatedEvent.cs",
@@ -105,8 +103,7 @@
               "RelativeToolTip": "EventHandler\\Events\\UserCreatedEvent.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAABRAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-09T13:54:15.091Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-09T13:54:15.091Z"
             },
             {
               "$type": "Document",
@@ -118,8 +115,7 @@
               "RelativeToolTip": "EventHandler\\UserEventEnvelope.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAqwAsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-09T13:53:07.241Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-09T13:53:07.241Z"
             },
             {
               "$type": "Document",
@@ -131,18 +127,17 @@
               "RelativeToolTip": "EventHandler\\IUserEventHandler.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-09T13:42:51.919Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-09T13:42:51.919Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\ognjen.dacevic\\Desktop\\Arry\\CompanyTask\\RabbitConsumer\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\ognjen.dacevic\\Desktop\\Arry\\CompanyTask\\RabbitConsumer\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAABsAAABAAAAAAMAuwCQAAAAIAAAA",
+              "ViewState": "AQIAAC0AAAAAAAAAAAAiwEUAAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-09T13:05:47.524Z",
               "EditorCaption": ""

@@ -20,7 +20,7 @@ import (
 // @title           CompanyTask API
 // @version         1.0
 // @description     API documentation for the CompanyTask project
-// @host            localhost:8000
+// @host            localhost:8081
 // @BasePath        /
 // @securityDefinitions.apikey BearerAuth
 // @in header
@@ -37,12 +37,12 @@ func main() {
 	r := gin.Default()
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
-	timeout := time.Duration(5) * time.Second
+	timeout := time.Duration(app.Env.ContextTimeout) * time.Second
 
-	router.Setup(timeout, app.DB, app.RabbitChannel, r)
+	router.Setup(app.Env, timeout, app.DB, app.RabbitChannel, r)
 
 	srv := &http.Server{
-		Addr:         ":8000",
+		Addr:         app.Env.ServerAddress,
 		Handler:      r,
 		WriteTimeout: 15 * time.Second,
 		ReadTimeout:  15 * time.Second,

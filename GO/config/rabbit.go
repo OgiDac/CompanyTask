@@ -6,8 +6,9 @@ import (
 	amqp "github.com/rabbitmq/amqp091-go"
 )
 
-func NewRabbitMQ() (*amqp.Connection, *amqp.Channel) {
-	conn, err := amqp.Dial("amqp://guest:guest@localhost:5672/")
+func NewRabbitMQ(env *Env) (*amqp.Connection, *amqp.Channel) {
+	// conn, err := amqp.Dial("amqp://guest:guest@localhost:5672/")
+	conn, err := amqp.Dial(env.RabbitMQUrl)
 	if err != nil {
 		log.Fatalf("Failed to connect to RabbitMQ: %v", err)
 	}

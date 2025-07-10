@@ -9,13 +9,14 @@ class Program
     static async Task Main(string[] args)
     {
         Console.WriteLine("Starting RabbitMQ Consumer...");
+        var rabbitUrl = Environment.GetEnvironmentVariable("RABBITMQ_URL")
+                 ?? "amqp://guest:guest@localhost:5672/";
 
         var factory = new ConnectionFactory
         {
-            HostName = "localhost",
-            UserName = "guest",
-            Password = "guest"
+            Uri = new Uri(rabbitUrl)
         };
+
 
         using var connection = await factory.CreateConnectionAsync();
         using var channel = await connection.CreateChannelAsync();
@@ -71,7 +72,7 @@ class Program
             consumer: consumer
         );
 
-        Console.WriteLine("Press [enter] to exit.");
-        Console.ReadLine();
+        Console.WriteLine("Press CTRL + C to exit.");
+        await Task.Delay(Timeout.Infinite);
     }
 }

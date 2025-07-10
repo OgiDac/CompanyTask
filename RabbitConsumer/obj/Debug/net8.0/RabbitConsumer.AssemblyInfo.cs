@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RabbitConsumer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2e87b1003451655f4ff00a92e506870e75252495")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+77bb153fa63b877a3fdda23294c135c8e5230901")]
 [assembly: System.Reflection.AssemblyProductAttribute("RabbitConsumer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RabbitConsumer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
